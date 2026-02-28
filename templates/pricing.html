@@ -1,0 +1,78 @@
+<h1 style="color:red;">DEBUG VERSION ACTIVE</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pricing - FinExtract Pro</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">FinExtract Pro</div>
+    <div class="nav-links">
+        <a href="/">Home</a>
+    </div>
+</nav>
+
+<section class="pricing-page">
+    <h1>Choose Your Plan</h1>
+
+    <div class="pricing-grid">
+
+        <div class="plan">
+            <h3>Professional</h3>
+            <ul>
+                <li>Unlimited Uploads</li>
+                <li>Advanced Structuring</li>
+                <li>Priority Support</li>
+            </ul>
+            <h2>$999</h2>
+
+            <!-- IMPORTANT: type="button" -->
+            <button type="button" id="proBtn" class="btn-primary">
+                Buy Now
+            </button>
+
+        </div>
+
+    </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const proBtn = document.getElementById("proBtn");
+
+    proBtn.addEventListener("click", async function (e) {
+
+        e.preventDefault();
+
+        try {
+            const response = await fetch(window.location.origin + "/create-paypal-order/pro", {
+                method: "POST"
+            });
+
+            const data = await response.json();
+
+            console.log("PayPal Response:", data);
+
+            if (data.approval_url) {
+                window.location.href = data.approval_url;
+            } else {
+                alert("Error creating PayPal order");
+            }
+
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Something went wrong while connecting to server.");
+        }
+
+    });
+
+});
+</script>
+
+</body>
+</html>

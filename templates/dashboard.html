@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body style="text-align:center; padding:80px;">
+
+    <h2>Welcome {{ email }}</h2>
+
+    <h3>Your Plan: {{ plan }}</h3>
+    <p>Status: {{ status }}</p>
+
+    <br><br>
+
+    <a href="/logout" class="btn-primary">Logout</a>
+
+</body>
+</html>

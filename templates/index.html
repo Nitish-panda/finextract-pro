@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FinExtract Pro</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">FinExtract Pro</div>
+
+    <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#upload">Upload</a>
+
+        {% if logged_in %}
+    <a href="/dashboard">Dashboard</a>
+    <a href="/logout" class="auth-btn">Logout</a>
+{% else %}
+    <a href="/login-page" class="auth-btn">Login</a>
+    <a href="/register-page" class="auth-btn">Register</a>
+{% endif %}
+    </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <h1>Transform Financial Statements Into Structured Excel — Instantly</h1>
+    <p>AI-powered extraction for accountants, startups & finance teams.</p>
+    <div class="hero-buttons">
+        <a href="#pricing" class="btn-primary">Start Free Trial</a>
+        <a href="#upload" class="btn-secondary">Request Demo</a>
+    </div>
+</section>
+
+<!-- SPONSOR SECTION -->
+<section class="sponsors">
+    <p>Trusted by finance professionals</p>
+    <div class="sponsor-logos">
+        <div>StartupX</div>
+        <div>FinCorp</div>
+        <div>AuditPro</div>
+        <div>DataBooks</div>
+    </div>
+</section>
+
+<!-- FEATURES SECTION -->
+<section id="features" class="features">
+    <h2>Built For Every Financial Workflow</h2>
+    <div class="feature-grid">
+        <div class="card">
+            <h3>Accountants</h3>
+            <p>Extract and structure income statements in seconds.</p>
+        </div>
+        <div class="card">
+            <h3>Startups</h3>
+            <p>Automate reporting and save operational hours.</p>
+        </div>
+        <div class="card">
+            <h3>Finance Teams</h3>
+            <p>Convert PDFs into actionable financial data.</p>
+        </div>
+        <div class="card">
+            <h3>Students</h3>
+            <p>Learn financial analysis using structured outputs.</p>
+        </div>
+        <div class="card">
+            <h3>Investment Analysts</h3>
+            <p>Quickly model multi-year financial trends.</p>
+        </div>
+        <div class="card">
+            <h3>Auditors & Compliance</h3>
+            <p>Validate reported figures with structured datasets.</p>
+        </div>
+    </div>
+</section>
+
+<!-- PRICING SECTION -->
+<section id="pricing" class="pricing">
+    <h2>Choose Your Plan</h2>
+    <p>Flexible pricing for individuals and enterprises</p>
+
+    <div class="pricing-grid">
+
+        <div class="plan">
+            <h3>Free</h3>
+            <ul>
+                <li>1 Upload / Day</li>
+                <li>Basic Extraction</li>
+                <li>Email Support</li>
+            </ul>
+            <h2>₹0</h2>
+            <button type="button" class="btn-primary" onclick="buyPlan('pro')">
+                Start Free Trial
+            </button>
+        </div>
+
+        <div class="plan popular">
+            <h3>Professional</h3>
+            <ul>
+                <li>Unlimited Uploads</li>
+                <li>Advanced Structuring</li>
+                <li>Priority Support</li>
+            </ul>
+            <h2>₹999 / Month</h2>
+            <button type="button" class="btn-primary" onclick="buyPlan('pro')">
+                Buy Now
+            </button>
+        </div>
+
+        <div class="plan">
+            <h3>Enterprise</h3>
+            <ul>
+                <li>Custom AI Models</li>
+                <li>Dedicated Support</li>
+                <li>On-Premise Option</li>
+            </ul>
+            <h2>₹4999 / Month</h2>
+            <button type="button" class="btn-primary" onclick="buyPlan('enterprise')">
+                Contact Sales
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+    <h2>What Professionals Say</h2>
+
+    <div class="testimonial-track" id="testimonialTrack">
+
+        <div class="testimonial-card">
+            <p>"FinExtract reduced our reporting time by 70%."</p>
+            <h4>— Rahul Mehta, CFO</h4>
+        </div>
+
+        <div class="testimonial-card">
+            <p>"Perfect tool for multi-year modeling."</p>
+            <h4>— Anjali Sharma, Analyst</h4>
+        </div>
+
+        <div class="testimonial-card">
+            <p>"Automated our accounting workflow."</p>
+            <h4>— Arjun Verma, CA</h4>
+        </div>
+
+        <div class="testimonial-card">
+            <p>"Highly accurate structured output."</p>
+            <h4>— Sneha Patel</h4>
+        </div>
+
+        <div class="testimonial-card">
+            <p>"Saved us hours every week."</p>
+            <h4>— Vikram Joshi</h4>
+        </div>
+
+        <div class="testimonial-card">
+            <p>"A must-have for analysts."</p>
+            <h4>— Priya Nair</h4>
+        </div>
+
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+        <h4>Is my financial data secure?</h4>
+        <p>Yes. Files are processed securely and not stored permanently.</p>
+    </div>
+
+    <div class="faq-item">
+        <h4>Does it support scanned PDFs?</h4>
+        <p>Currently only text-based PDFs are supported. OCR integration is planned.</p>
+    </div>
+
+    <div class="faq-item">
+        <h4>Can I cancel anytime?</h4>
+        <p>Yes, subscriptions can be cancelled anytime.</p>
+    </div>
+</section>
+
+<!-- UPLOAD -->
+<section id="upload" class="upload">
+    <h2>Upload Your Financial Statement</h2>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit" class="btn-primary">Process PDF</button>
+    </form>
+</section>
+
+<footer class="main-footer">
+
+    <div class="footer-top">
+
+        <div class="footer-box">
+            <h3>Free Trial</h3>
+            <p>Start with a 14-day free trial to experience effortless accounting.</p>
+            <button class="footer-btn">Start Trial</button>
+        </div>
+
+        <div class="footer-box">
+            <h3>Demo Organization</h3>
+            <p>Explore features without using your real business data.</p>
+            <button class="footer-btn">Explore Demo</button>
+        </div>
+
+        <div class="footer-box">
+            <h3>Plans & Pricing</h3>
+            <p>Compare plans and features to find the best fit.</p>
+            <button class="footer-btn">View Plans</button>
+        </div>
+
+        <div class="footer-box">
+            <h3>Webinars</h3>
+            <p>Join us online for live finance sessions.</p>
+            <button class="footer-btn">All Webinars</button>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 FinExtract Pro — Secure | Scalable | AI Powered</p>
+    </div>
+
+</footer>
+
+<!-- PAYPAL SCRIPT -->
+<script>
+async function buyPlan(plan) {
+    try {
+        const response = await fetch(
+            window.location.origin + "/create-paypal-order/" + plan,
+            { method: "POST" }
+        );
+
+        const data = await response.json();
+
+        if (data.approval_url) {
+            window.location.href = data.approval_url;
+        } else {
+            alert("Error creating PayPal order");
+        }
+
+    } catch (error) {
+        console.error(error);
+        alert("Something went wrong while connecting to server.");
+    }
+}
+</script>
+
+<!-- SCROLL TO TOP BUTTON -->
+<button id="scrollTopBtn">&#8679;</button>
+
+<script>
+const scrollBtn = document.getElementById("scrollTopBtn");
+
+window.onscroll = function () {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        scrollBtn.style.display = "block";
+    } else {
+        scrollBtn.style.display = "none";
+    }
+};
+
+scrollBtn.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
+</script>
+
+</body>
+</html>
